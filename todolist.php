@@ -9,7 +9,7 @@ class Tarefas {
     public function __construct(string $titulo, string $descricao, string $data_entrega) {
         $this->titulo = $titulo;
         $this->descricao = $descricao;
-        $this->data_entrega = DateTime::createFromFormat('d/m/Y', $data_entrega);
+        $this->data_entrega = DateTime::createFromFormat('Y-m-d', $data_entrega);
         
 
     }
@@ -36,6 +36,17 @@ class Tarefas {
 
     public function __toString() {
         return "{$this->titulo} - {$this->descricao} - Entrega: " . $this->data_entrega->format('d/m/Y');
+    }
+
+    public function salvarTarefaemArquivo() {
+        $arquivo = fopen("tarefas.txt", "a");
+        if ($arquivo) {
+            $linha = "{$this->titulo};{$this->descricao};{$this->data_entrega->format('d/m/Y')}\n";
+            fwrite($arquivo, $linha);
+            fclose($arquivo);
+        } else {
+            echo "Erro ao abrir o arquivo.";
+        }
     }
 }
 

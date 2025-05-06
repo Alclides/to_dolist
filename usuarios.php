@@ -5,7 +5,7 @@ require_once 'todolist.php';
 class Usuario {
     public $nome;
     public $email;
-    private $senha;
+    public $senha;
     private $tarefas = [];
 
     public function __construct(string $nome, string $email, string $senha) {

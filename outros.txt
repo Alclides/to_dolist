@@ -1,0 +1,12 @@
+
+    $tarefa1 = new Tarefas("Fazer o Teste", "Revisar PHP", '10/05/2025');
+    $tarefa2 = new Tarefas("Ir na empresa", "Participar da reunião", "06/05/2025");
+    $usuario->adicionarTarefas($tarefa2);
+    $tarefa2->estaAtrasada();
+    $usuario->adicionarTarefas($tarefa1);
+    $usuario->listarTarefas();
+    $usuario->concluirTarefa("Fazer o Teste");
+    echo "<hr>";
+
+
+
