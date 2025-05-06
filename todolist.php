@@ -19,13 +19,23 @@ class Tarefas {
     }
 
     public function estaAtrasada() {
+        if (!isset($this->data_entrega)) {
+            echo 23;
+        }
+
         $hoje = new DateTime();
-        return $hoje > $this->data_entrega && $this->descricao != "Concluída!";
+        $hoje_format = $hoje->format('d/m/Y');
+        if ($hoje_format >= $this->data_entrega->format('d/m/y')) {
+            echo "Atrasado <br>";
+
+        }else {
+            echo "Em dia! <br>";
+        }
     
     }
 
     public function __toString() {
-        return "{$this->titulo} - {$this->descricao} - Entrega: " . $this->data_entrega->format('d/m/y');
+        return "{$this->titulo} - {$this->descricao} - Entrega: " . $this->data_entrega->format('d/m/Y');
     }
 }
 
